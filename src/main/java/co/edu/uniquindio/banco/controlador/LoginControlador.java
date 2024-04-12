@@ -1,6 +1,8 @@
 package co.edu.uniquindio.banco.controlador;
 
 import co.edu.uniquindio.banco.modelo.Banco;
+import co.edu.uniquindio.banco.modelo.Sesion;
+import co.edu.uniquindio.banco.modelo.Usuario;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -20,11 +22,15 @@ public class LoginControlador {
     TextField txtIdentificacion;
     @FXML
     PasswordField txtPassword;
-
+    Sesion sesion;
     Banco banco = Banco.getInstancia();
     public void iniciarSesion(ActionEvent actionEvent){
-        if (banco.validarUsuario(txtIdentificacion.getText(), txtPassword.getText()) != null){
+        Usuario usuario = banco.validarUsuario(txtIdentificacion.getText(), txtPassword.getText());
+        if (usuario != null){
             mostrarVentana();
+            sesion = Sesion.getInstancia();
+            sesion.setUsuario(usuario);
+
         }else{
             crearAlerta("Datos incorrectos, intente nuevamente", Alert.AlertType.ERROR);
         }
