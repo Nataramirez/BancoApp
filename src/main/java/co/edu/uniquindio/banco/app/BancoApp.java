@@ -16,7 +16,7 @@ public class BancoApp extends Application {
     @Override
     public void start(Stage stage) throws Exception {
 
-        FXMLLoader loader = new FXMLLoader(BancoApp.class.getResource("/inicio.fxml"));
+        FXMLLoader loader = new FXMLLoader(BancoApp.class.getResource("/panelCliente.fxml"));
         Parent parent = loader.load();
 
         Scene scene = new Scene(parent);
