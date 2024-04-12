@@ -16,8 +16,9 @@ import java.util.Random;
 public class Banco {
     private final ArrayList<Usuario> usuarios;
     private final ArrayList<CuentaAhorros> cuentasAhorros;
+    public static Banco INSTANCIA;
 
-    public Banco() {
+    private Banco() {
         usuarios = new ArrayList<>();
         cuentasAhorros = new ArrayList<>();
         llenarDatosPrueba();
@@ -200,14 +201,14 @@ public class Banco {
      * @return usuario
      * @throws Exception si los datos de acceso son incorrectos
      */
-    public Usuario validarUsuario(String numeroIdentificacion, String contrasena)throws Exception{
+    public Usuario validarUsuario(String numeroIdentificacion, String contrasena){
         Usuario usuario = obtenerUsuario(numeroIdentificacion);
         if(usuario != null){
             if(usuario.getContrasena().equals(contrasena)){
                 return usuario;
             }
         }
-        throw new Exception("Los datos de acceso son incorrectos");
+        return null;
     }
 
     /**
@@ -281,6 +282,13 @@ public class Banco {
             }
         }
         return null;
+    }
+
+    public static Banco getInstancia(){
+        if (INSTANCIA == null){
+            INSTANCIA = new Banco();
+        }
+        return INSTANCIA;
     }
 
 }
