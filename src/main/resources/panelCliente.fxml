@@ -35,7 +35,7 @@
    </TableView>
 
     <HBox alignment="CENTER_LEFT" spacing="20.0">
-        <Button minHeight="40.0" minWidth="130.0" style="-fx-background-color: #00807a; -fx-text-fill: white" text="Cerrar sesión" />
+        <Button minHeight="40.0" minWidth="130.0" style="-fx-background-color: #00807a; -fx-text-fill: white" text="Cerrar sesión" onAction="#irIniciarSesion" />
         <Button minHeight="40.0" minWidth="130.0" style="-fx-background-color: #00807a; -fx-text-fill: white" text="Consultar" />
         <Button minHeight="40.0" minWidth="130.0" style="-fx-background-color: #00807a; -fx-text-fill: white" text="Transferir" />
 
