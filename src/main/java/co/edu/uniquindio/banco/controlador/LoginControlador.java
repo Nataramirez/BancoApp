@@ -30,10 +30,9 @@ public class LoginControlador {
     public void iniciarSesion(ActionEvent actionEvent){
         Usuario usuario = banco.validarUsuario(txtIdentificacion.getText(), txtPassword.getText());
         if (usuario != null){
-            mostrarVentana();
             sesion = Sesion.getInstancia();
             sesion.setUsuario(usuario);
-
+            mostrarVentana();
         }else{
             crearAlerta("Datos incorrectos, intente nuevamente", Alert.AlertType.ERROR);
         }
@@ -70,6 +69,9 @@ public class LoginControlador {
 
             // Mostrar la nueva ventana
             stage.show();
+
+            //Cerrar la ventana actual.
+            cerrarVentana();
 
         }catch (Exception e){
             e.printStackTrace();
