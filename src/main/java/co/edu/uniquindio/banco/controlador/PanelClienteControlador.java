@@ -1,24 +1,25 @@
 package co.edu.uniquindio.banco.controlador;
 
-import co.edu.uniquindio.banco.modelo.Banco;
-import co.edu.uniquindio.banco.modelo.CuentaAhorros;
-import co.edu.uniquindio.banco.modelo.Sesion;
-import co.edu.uniquindio.banco.modelo.Usuario;
+import co.edu.uniquindio.banco.modelo.*;
+import javafx.beans.property.SimpleFloatProperty;
+import javafx.beans.property.SimpleStringProperty;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
+import javafx.scene.control.*;
 import javafx.stage.Stage;
+
+import java.net.URL;
+import java.time.LocalDateTime;
+import java.util.ResourceBundle;
 
 /**
  * Clase que se encarga de gestionar las acciones de la interfaz gráfica del panel del cliente.
  * @author caflorezvi
  */
-public class PanelClienteControlador {
+public class PanelClienteControlador{
     @FXML
     private Label mensajeBienvenida;
     @FXML
@@ -29,6 +30,20 @@ public class PanelClienteControlador {
     private Button consultar;
     @FXML
     private Button transferir;
+    @FXML
+    private TableView<Transaccion> tablaTransacciones;
+    @FXML
+    private TableColumn<Transaccion, String> colTipo;
+    @FXML
+    private TableColumn<Transaccion, String> colFecha;
+    @FXML
+    private TableColumn<Transaccion, String> colMonto;
+    @FXML
+    private TableColumn<Transaccion, String> colUsuario;
+    @FXML
+    private TableColumn<Transaccion, String> colCategoria;
+
+
 
     private final Banco banco = Banco.getInstancia();
     private Sesion sesion = Sesion.getInstancia();
@@ -65,6 +80,15 @@ public class PanelClienteControlador {
         alert.setHeaderText(null);
         alert.setContentText("El saldo de su cuenta es $" + cuentaAhorros.getSaldo());
         alert.showAndWait();
+    }
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        colTipo.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getTipo().toString()));
+        colFecha.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getFecha().toString()));
+        colMonto.setCellValueFactory(cellData -> new SimpleStringProperty(""+cellData.getValue().getMonto()));
+        colUsuario.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getUsuario().getNombre()));
+        colCategoria.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getCategoria().toString()));
     }
 
     public void realizarTransferencia(ActionEvent actionEvent) {
