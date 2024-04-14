@@ -28,7 +28,7 @@
      <columns>
          <TableColumn fx:id="colTipo" prefWidth="150.0" text="Tipo" />
          <TableColumn fx:id="colFecha" prefWidth="150.0" text="Fecha" />
-         <TableColumn fx:id="colValor" prefWidth="150.0" text="Valor" />
+         <TableColumn fx:id="colMonto" prefWidth="150.0" text="Valor" />
          <TableColumn fx:id="colUsuario" prefWidth="150.0" text="Usuario" />
          <TableColumn fx:id="colCategoria" minWidth="150.0" prefWidth="97.0" text="Categoría" />
      </columns>

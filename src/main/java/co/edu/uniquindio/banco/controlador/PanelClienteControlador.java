@@ -1,7 +1,6 @@
 package co.edu.uniquindio.banco.controlador;
 
 import co.edu.uniquindio.banco.modelo.*;
-import javafx.beans.property.SimpleFloatProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -12,7 +11,6 @@ import javafx.scene.control.*;
 import javafx.stage.Stage;
 
 import java.net.URL;
-import java.time.LocalDateTime;
 import java.util.ResourceBundle;
 
 /**
@@ -82,7 +80,6 @@ public class PanelClienteControlador{
         alert.showAndWait();
     }
 
-    @Override
     public void initialize(URL location, ResourceBundle resources) {
         colTipo.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getTipo().toString()));
         colFecha.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getFecha().toString()));
