@@ -38,7 +38,6 @@
         <Button minHeight="40.0" minWidth="130.0" style="-fx-background-color: #00807a; -fx-text-fill: white" text="Cerrar sesión" />
         <Button minHeight="40.0" minWidth="130.0" style="-fx-background-color: #00807a; -fx-text-fill: white" text="Consultar" />
         <Button minHeight="40.0" minWidth="130.0" style="-fx-background-color: #00807a; -fx-text-fill: white" text="Transferir" />
-        <Button id="btnActualizar" onAction="#actualizar" minHeight="40.0" minWidth="130.0" style="-fx-background-color: #00807a; -fx-text-fill: white" text="Actualizar" />
 
     </HBox>
 
