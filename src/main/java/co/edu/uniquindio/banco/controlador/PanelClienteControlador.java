@@ -1,13 +1,18 @@
 package co.edu.uniquindio.banco.controlador;
 
 import co.edu.uniquindio.banco.modelo.*;
-import javafx.beans.property.SimpleStringProperty;
+import co.edu.uniquindio.banco.modelo.Banco;
+import co.edu.uniquindio.banco.modelo.CuentaAhorros;
+import co.edu.uniquindio.banco.modelo.Sesion;
+import co.edu.uniquindio.banco.modelo.Usuario;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.*;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.stage.Stage;
 
 import java.net.URL;
@@ -17,7 +22,7 @@ import java.util.ResourceBundle;
  * Clase que se encarga de gestionar las acciones de la interfaz gráfica del panel del cliente.
  * @author caflorezvi
  */
-public class PanelClienteControlador{
+public class PanelClienteControlador {
     @FXML
     private Label mensajeBienvenida;
     @FXML
@@ -28,20 +33,6 @@ public class PanelClienteControlador{
     private Button consultar;
     @FXML
     private Button transferir;
-    @FXML
-    private TableView<Transaccion> tablaTransacciones;
-    @FXML
-    private TableColumn<Transaccion, String> colTipo;
-    @FXML
-    private TableColumn<Transaccion, String> colFecha;
-    @FXML
-    private TableColumn<Transaccion, String> colMonto;
-    @FXML
-    private TableColumn<Transaccion, String> colUsuario;
-    @FXML
-    private TableColumn<Transaccion, String> colCategoria;
-
-
 
     private final Banco banco = Banco.getInstancia();
     private Sesion sesion = Sesion.getInstancia();
