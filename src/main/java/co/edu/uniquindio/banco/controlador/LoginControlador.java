@@ -22,8 +22,11 @@ public class LoginControlador {
     TextField txtIdentificacion;
     @FXML
     PasswordField txtPassword;
+
     Sesion sesion;
+
     Banco banco = Banco.getInstancia();
+
     public void iniciarSesion(ActionEvent actionEvent){
         Usuario usuario = banco.validarUsuario(txtIdentificacion.getText(), txtPassword.getText());
         if (usuario != null){
@@ -34,6 +37,7 @@ public class LoginControlador {
         }else{
             crearAlerta("Datos incorrectos, intente nuevamente", Alert.AlertType.ERROR);
         }
+
     }
 
     public void crearAlerta(String mensaje, Alert.AlertType tipo){
@@ -51,6 +55,10 @@ public class LoginControlador {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/panelCliente.fxml"));
             Parent root = loader.load();
 
+            // Obtener el controlador de la nueva ventana
+            PanelClienteControlador controller = loader.getController();
+            controller.inicializarValores();
+
             // Crear la escena
             Scene scene = new Scene(root);
 
@@ -66,5 +74,13 @@ public class LoginControlador {
         }catch (Exception e){
             e.printStackTrace();
         }
+    }
+
+    /**
+     * Método que se encarga de cerrar la ventana actual
+     */
+    public void cerrarVentana(){
+        Stage stage = (Stage) txtIdentificacion.getScene().getWindow();
+        stage.close();
     }
 }
