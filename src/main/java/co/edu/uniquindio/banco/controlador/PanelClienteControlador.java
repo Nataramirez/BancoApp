@@ -1,5 +1,6 @@
 package co.edu.uniquindio.banco.controlador;
 
+import co.edu.uniquindio.banco.controlador.observador.Observable;
 import co.edu.uniquindio.banco.modelo.Banco;
 import co.edu.uniquindio.banco.modelo.CuentaAhorros;
 import co.edu.uniquindio.banco.modelo.Sesion;
@@ -18,7 +19,7 @@ import javafx.stage.Stage;
  * Clase que se encarga de gestionar las acciones de la interfaz gráfica del panel del cliente.
  * @author caflorezvi
  */
-public class PanelClienteControlador {
+public class PanelClienteControlador implements Observable {
     @FXML
     private Label mensajeBienvenida;
     @FXML
@@ -103,4 +104,17 @@ public class PanelClienteControlador {
         stage.close();
     }
 
+    public PanelClienteControlador(){
+        System.out.println(sesion);
+        System.out.println(banco);
+    }
+
+    public void irATransferir(ActionEvent actionEvent){
+        navegarVentana("/transferencia.fxml", "Transferencia");
+    }
+
+    @Override
+    public void notificar() {
+
+    }
 }

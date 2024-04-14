@@ -302,7 +302,7 @@ public class Banco {
         for(int i = 0; i < cuentasAhorros.size(); i++){
             if(cuentasAhorros.get(i).getPropietario().getNumeroIdentificacion().equals(numeroIdentificacion)){
                 return cuentasAhorros.get(i);
-            }
+            } 
         }
         return null;
     }
