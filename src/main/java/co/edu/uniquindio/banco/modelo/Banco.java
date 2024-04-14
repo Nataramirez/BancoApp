@@ -1,6 +1,7 @@
 package co.edu.uniquindio.banco.modelo;
 
 import co.edu.uniquindio.banco.modelo.enums.CategoriaTransaccion;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 
 import java.util.ArrayList;
@@ -13,10 +14,18 @@ import java.util.Random;
  * @author caflorezvi
  */
 @Getter
+@AllArgsConstructor
 public class Banco {
     private final ArrayList<Usuario> usuarios;
     private final ArrayList<CuentaAhorros> cuentasAhorros;
     public static Banco INSTANCIA;
+
+    public static Banco getInstancia(){
+        if (INSTANCIA == null){
+            INSTANCIA = new Banco();
+        }
+        return INSTANCIA;
+    }
 
     private Banco() {
         usuarios = new ArrayList<>();
@@ -284,11 +293,18 @@ public class Banco {
         return null;
     }
 
-    public static Banco getInstancia(){
-        if (INSTANCIA == null){
-            INSTANCIA = new Banco();
+    /**
+     * Método que obtiene una cuenta de ahorros de acuerdo al ID de su propietario
+     * @param numeroIdentificacion número de cuenta
+     * @return cuenta de ahorros o null si no existe
+     */
+    public CuentaAhorros obtenerCuentaAhorrosUsuario(String numeroIdentificacion){
+        for(int i = 0; i < cuentasAhorros.size(); i++){
+            if(cuentasAhorros.get(i).getPropietario().getNumeroIdentificacion().equals(numeroIdentificacion)){
+                return cuentasAhorros.get(i);
+            }
         }
-        return INSTANCIA;
+        return null;
     }
 
 }
