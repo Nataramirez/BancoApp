@@ -24,20 +24,20 @@
             </font>
         </Label>
     </HBox>
-   <TableView prefHeight="350.0" prefWidth="740.0">
+   <TableView fx:id="tablaTransacciones" prefHeight="350.0" prefWidth="740.0">
      <columns>
-         <TableColumn prefWidth="150.0" text="Tipo" />
-         <TableColumn prefWidth="150.0" text="Fecha" />
-         <TableColumn prefWidth="150.0" text="Valor" />
-         <TableColumn prefWidth="150.0" text="Usuario" />
-         <TableColumn minWidth="150.0" prefWidth="97.0" text="Categoría" />
+         <TableColumn fx:id="colTipo" prefWidth="150.0" text="Tipo" />
+         <TableColumn fx:id="colFecha" prefWidth="150.0" text="Fecha" />
+         <TableColumn fx:id="colValor" prefWidth="150.0" text="Valor" />
+         <TableColumn fx:id="colUsuario" prefWidth="150.0" text="Usuario" />
+         <TableColumn fx:id="colCategoria" minWidth="150.0" prefWidth="97.0" text="Categoría" />
      </columns>
    </TableView>
 
     <HBox alignment="CENTER_LEFT" spacing="20.0">
-        <Button fx:id="cerrarSesion" minHeight="40.0" minWidth="130.0" style="-fx-background-color: #00807a; -fx-text-fill: white" onAction="#cerrarSesionActual" text="Cerrar sesión" />
-        <Button fx:id="consultar" minHeight="40.0" minWidth="130.0" style="-fx-background-color: #00807a; -fx-text-fill: white" onAction="#consultarSaldo" text="Consultar" />
-        <Button fx:id="transferir" minHeight="40.0" minWidth="130.0" style="-fx-background-color: #00807a; -fx-text-fill: white" onAction="#realizarTransferencia" text="Transferir" />
+        <Button fx:id="cerrarSesion" minHeight="40.0" minWidth="130.0" onAction="#cerrarSesionActual" style="-fx-background-color: #00807a; -fx-text-fill: white" text="Cerrar sesión" />
+        <Button fx:id="consultar" minHeight="40.0" minWidth="130.0" onAction="#consultarSaldo" style="-fx-background-color: #00807a; -fx-text-fill: white" text="Consultar" />
+        <Button fx:id="transferir" minHeight="40.0" minWidth="130.0" onAction="#realizarTransferencia" style="-fx-background-color: #00807a; -fx-text-fill: white" text="Transferir" />
 
     </HBox>
 
