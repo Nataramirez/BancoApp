@@ -12,13 +12,13 @@
         </font>
     </Label>
     <HBox>
-        <Label prefHeight="20.0" prefWidth="487.0" text="Carlos bienvenido a su banco, aquí podrá ver sus transacciones">
+        <Label fx:id="mensajeBienvenida" prefHeight="20.0" prefWidth="487.0">
             <font>
                 <Font size="14.0" />
             </font>
         </Label>
 
-        <Label alignment="CENTER_RIGHT" prefHeight="20.0" prefWidth="280.0" text="Nro. Cuenta: 9067571744">
+        <Label fx:id="numeroCuenta" alignment="CENTER_RIGHT" prefHeight="20.0" prefWidth="280.0">
             <font>
                 <Font size="14.0" />
             </font>
@@ -35,9 +35,9 @@
    </TableView>
 
     <HBox alignment="CENTER_LEFT" spacing="20.0">
-        <Button minHeight="40.0" minWidth="130.0" style="-fx-background-color: #00807a; -fx-text-fill: white" text="Cerrar sesión" />
-        <Button minHeight="40.0" minWidth="130.0" style="-fx-background-color: #00807a; -fx-text-fill: white" text="Consultar" />
-        <Button minHeight="40.0" minWidth="130.0" style="-fx-background-color: #00807a; -fx-text-fill: white" text="Transferir" />
+        <Button fx:id="cerrarSesion" minHeight="40.0" minWidth="130.0" style="-fx-background-color: #00807a; -fx-text-fill: white" onAction="#cerrarSesionActual" text="Cerrar sesión" />
+        <Button fx:id="consultar" minHeight="40.0" minWidth="130.0" style="-fx-background-color: #00807a; -fx-text-fill: white" onAction="#consultarSaldo" text="Consultar" />
+        <Button fx:id="transferir" minHeight="40.0" minWidth="130.0" style="-fx-background-color: #00807a; -fx-text-fill: white" onAction="#realizarTransferencia" text="Transferir" />
 
     </HBox>
 
