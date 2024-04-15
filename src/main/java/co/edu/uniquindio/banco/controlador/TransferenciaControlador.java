@@ -35,11 +35,15 @@ public class TransferenciaControlador {
         txtCategoria.setItems(FXCollections.observableArrayList(CategoriaTransaccion.values()));
     }
 
-    public void transferir(ActionEvent actionEvent) throws Exception {
+    public void transferir() throws Exception {
+        System.out.println(sesion.getUsuario().getNumeroIdentificacion());
         boolean isMonto = txtMonto.getText().isBlank();
         boolean isCuenta = txtCuenta.getText().isBlank();
-        boolean isCategoria = txtCategoria.getValue() != null;
-        String cuentaOrigen = sesion.getCuentaAhorros().getNumeroCuenta();
+        boolean isCategoria = txtCategoria.getValue() == null;
+        System.out.println(banco.obtenerCuentaAhorrosUsuario(sesion.getUsuario().getNumeroIdentificacion()));
+
+        String cuentaOrigen = banco.obtenerCuentaAhorrosUsuario(sesion.getUsuario().getNumeroIdentificacion()).getNumeroCuenta();
+        System.out.println(cuentaOrigen);
         if (!isMonto && !isCuenta && !isCategoria){
             if (banco.obtenerCuentaAhorros(txtCuenta.getText()) == null){
                 crearAlerta("El número de cuenta al que desea transferir no existe. Por favor intente nuevamente.", Alert.AlertType.ERROR);
@@ -75,7 +79,7 @@ public class TransferenciaControlador {
     }
 
     public void cerrarVentana(){
-        Stage stage = (Stage) txtCuenta.getScene().getWindow();
-        stage.close();
+        Stage trasferencia = (Stage) txtCuenta.getScene().getWindow();
+        trasferencia.close();
     }
 }
