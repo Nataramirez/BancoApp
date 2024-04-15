@@ -50,6 +50,12 @@ public class PanelClienteControlador implements Observable, Initializable {
 
     private final Banco banco = Banco.getInstancia();
     private Sesion sesion = Sesion.getInstancia();
+    private Button btnActualizar;
+
+    public void actualizar(ActionEvent actionEvent) throws Exception {
+        navegarVentana("/actualizar.fxml", "Actualizar datos");
+    }
+
 
     Usuario usuario = sesion.getUsuario();
     CuentaAhorros cuentaAhorros = banco.obtenerCuentaAhorrosUsuario(usuario.getNumeroIdentificacion());
