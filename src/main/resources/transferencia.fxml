@@ -24,6 +24,6 @@
             <Label text="Categoría:" GridPane.columnIndex="0" GridPane.rowIndex="2" />
             <ComboBox fx:id="txtCategoria" minHeight="30.0" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
         </GridPane>
-        <Button minWidth="130.0" minHeight="40.0" text="Transferir" onAction="#transferir" style="-fx-background-color: #00807a; -fx-text-fill: white" />
+        <Button id="btnTransferencia" minWidth="130.0" minHeight="40.0" text="Transferir" onAction="#transferir" style="-fx-background-color: #00807a; -fx-text-fill: white" />
     </children>
 </VBox>

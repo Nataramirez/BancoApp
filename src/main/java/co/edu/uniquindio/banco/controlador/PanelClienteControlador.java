@@ -7,9 +7,11 @@ import co.edu.uniquindio.banco.modelo.CuentaAhorros;
 import co.edu.uniquindio.banco.modelo.Sesion;
 import co.edu.uniquindio.banco.modelo.Usuario;
 import javafx.beans.property.SimpleStringProperty;
+import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
@@ -22,7 +24,7 @@ import java.util.ResourceBundle;
  * Clase que se encarga de gestionar las acciones de la interfaz gráfica del panel del cliente.
  * @author caflorezvi
  */
-public class PanelClienteControlador implements Observable {
+public class PanelClienteControlador implements Observable, Initializable {
     @FXML
     private Label mensajeBienvenida;
     @FXML
@@ -55,6 +57,7 @@ public class PanelClienteControlador implements Observable {
     public void inicializarValores(){
         try {
             if(sesion.getUsuario() != null){
+                consultarTransacciones();
                 mostrarMensajesPanel();
             }
         } catch (Exception e) {
@@ -68,7 +71,7 @@ public class PanelClienteControlador implements Observable {
         numeroCuenta.setText("Nro. Cuenta" + cuentaAhorros.getNumeroCuenta());
     }
 
-    public void cerrarSesionActual(ActionEvent actionEvent) {
+    public void cerrarSesionActual(ActionEvent actionEvent)throws Exception {
         sesion.cerrarSesion();
         navegarVentana("/login.fxml", "Banco - Iniciar Sesión");
         cerrarVentana();
@@ -83,7 +86,9 @@ public class PanelClienteControlador implements Observable {
         alert.showAndWait();
     }
 
+    @Override
     public void initialize(URL location, ResourceBundle resources) {
+        inicializarValores();
         colTipo.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getTipo().toString()));
         colFecha.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getFecha().toString()));
         colMonto.setCellValueFactory(cellData -> new SimpleStringProperty(""+cellData.getValue().getMonto()));
@@ -91,13 +96,7 @@ public class PanelClienteControlador implements Observable {
         colCategoria.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getCategoria().toString()));
     }
 
-    public void realizarTransferencia(ActionEvent actionEvent) {
-        navegarVentana("/transferencia.fxml", "Banco - Realizar Transferencia");
-    }
-
-    public void navegarVentana(String nombreArchivoFxml, String tituloVentana) {
-        try {
-
+    public FXMLLoader navegarVentana(String nombreArchivoFxml, String tituloVentana)throws Exception {
             // Cargar la vista
             FXMLLoader loader = new FXMLLoader(getClass().getResource(nombreArchivoFxml));
             Parent root = loader.load();
@@ -113,10 +112,7 @@ public class PanelClienteControlador implements Observable {
 
             // Mostrar la nueva ventana
             stage.show();
-
-        }catch (Exception e){
-            e.printStackTrace();
-        }
+            return loader;
     }
 
     /**
@@ -132,12 +128,18 @@ public class PanelClienteControlador implements Observable {
         System.out.println(banco);
     }
 
-    public void irATransferir(ActionEvent actionEvent){
-        navegarVentana("/transferencia.fxml", "Transferencia");
+    public void irATransferir(ActionEvent actionEvent)throws Exception{
+        FXMLLoader loader = navegarVentana("/transferencia.fxml", "Transferencia");
+        TransferenciaControlador controlador = loader.getController();
+        controlador.inicializarObservable(this);
     }
 
+    private void consultarTransacciones(){
+        System.out.println(cuentaAhorros.getTransacciones());
+        this.tablaTransacciones.setItems(FXCollections.observableArrayList(cuentaAhorros.getTransacciones()));
+    }
     @Override
     public void notificar() {
-
+        consultarTransacciones();
     }
 }

@@ -23,14 +23,14 @@ public class LoginControlador {
     @FXML
     PasswordField txtPassword;
 
-    Sesion sesion;
+    private final Sesion sesion = Sesion.getInstancia();
 
-    Banco banco = Banco.getInstancia();
+    private final Banco banco = Banco.getInstancia();
 
     public void iniciarSesion(ActionEvent actionEvent){
         Usuario usuario = banco.validarUsuario(txtIdentificacion.getText(), txtPassword.getText());
         if (usuario != null){
-            sesion = Sesion.getInstancia();
+            // sesion = Sesion.getInstancia();
             sesion.setUsuario(usuario);
             mostrarVentana();
         }else{
