@@ -9,6 +9,7 @@ import lombok.*;
 public class Sesion {
     public static Sesion INSTANCIA;
     private Usuario usuario;
+    private CuentaAhorros cuentaAhorros;
 
     public static Sesion getInstancia(){
         if (INSTANCIA==null){

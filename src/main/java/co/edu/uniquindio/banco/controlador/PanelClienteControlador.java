@@ -7,6 +7,7 @@ import co.edu.uniquindio.banco.modelo.CuentaAhorros;
 import co.edu.uniquindio.banco.modelo.Sesion;
 import co.edu.uniquindio.banco.modelo.Usuario;
 import javafx.beans.property.SimpleStringProperty;
+import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -68,7 +69,7 @@ public class PanelClienteControlador implements Observable {
         numeroCuenta.setText("Nro. Cuenta" + cuentaAhorros.getNumeroCuenta());
     }
 
-    public void cerrarSesionActual(ActionEvent actionEvent) {
+    public void cerrarSesionActual(ActionEvent actionEvent)throws Exception {
         sesion.cerrarSesion();
         navegarVentana("/login.fxml", "Banco - Iniciar Sesión");
         cerrarVentana();
@@ -91,13 +92,13 @@ public class PanelClienteControlador implements Observable {
         colCategoria.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getCategoria().toString()));
     }
 
-    public void realizarTransferencia(ActionEvent actionEvent) {
-        navegarVentana("/transferencia.fxml", "Banco - Realizar Transferencia");
+    public void realizarTransferencia(ActionEvent actionEvent)throws Exception {
+        FXMLLoader loader = navegarVentana("/transferencia.fxml", "Banco - Realizar Transferencia");
+        TransferenciaControlador controladorTransferencia = loader.getController();
+        controladorTransferencia.inicializarObservable(this);
     }
 
-    public void navegarVentana(String nombreArchivoFxml, String tituloVentana) {
-        try {
-
+    public FXMLLoader navegarVentana(String nombreArchivoFxml, String tituloVentana)throws Exception {
             // Cargar la vista
             FXMLLoader loader = new FXMLLoader(getClass().getResource(nombreArchivoFxml));
             Parent root = loader.load();
@@ -113,10 +114,7 @@ public class PanelClienteControlador implements Observable {
 
             // Mostrar la nueva ventana
             stage.show();
-
-        }catch (Exception e){
-            e.printStackTrace();
-        }
+            return loader;
     }
 
     /**
@@ -132,12 +130,15 @@ public class PanelClienteControlador implements Observable {
         System.out.println(banco);
     }
 
-    public void irATransferir(ActionEvent actionEvent){
+    public void irATransferir(ActionEvent actionEvent)throws Exception{
         navegarVentana("/transferencia.fxml", "Transferencia");
     }
 
+    private void setConsultarTransacciones(){
+        tablaTransacciones.setItems(FXCollections.observableArrayList(cuentaAhorros.getTransacciones()));
+    }
     @Override
     public void notificar() {
-
+        setConsultarTransacciones();
     }
 }
