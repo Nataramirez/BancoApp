@@ -2,11 +2,28 @@
 
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.*?>
 
-<VBox xmlns="http://javafx.com/javafx"
-      xmlns:fx="http://javafx.com/fxml"
-      fx:controller="co.edu.uniquindio.banco.controlador.TransferenciaControlador"
-      prefHeight="300.0" prefWidth="400.0" alignment="center" spacing="30.0" >
+<VBox alignment="center" prefHeight="300.0" prefWidth="400.0" spacing="30.0"
+      xmlns="http://javafx.com/javafx/17.0.2-ea"
+      xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.banco.controlador.TransferenciaControlador">
+    <children>
+        <Label text="Realizar transferencia">
+            <font>
+                <Font size="18.0" />
+            </font>
+        </Label>
 
+        <GridPane alignment="CENTER" hgap="10.0" vgap="10.0">
+            <Label text="Número de cuenta:" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+            <TextField fx:id="txtCuenta" minHeight="30.0" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+
+            <Label text="Monto a transferir:" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+            <TextField fx:id="txtMonto" minHeight="30.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+
+            <Label text="Categoría:" GridPane.columnIndex="0" GridPane.rowIndex="2" />
+            <ComboBox fx:id="txtCategoria" minHeight="30.0" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+        </GridPane>
+        <Button minWidth="130.0" minHeight="40.0" text="Transferir" onAction="#transferir" style="-fx-background-color: #00807a; -fx-text-fill: white" />
+    </children>
 </VBox>
