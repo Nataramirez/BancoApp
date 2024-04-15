@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+        <?import javafx.scene.control.*?>
+        <?import javafx.scene.layout.*?>
+        <?import javafx.scene.text.*?>
+
+<VBox alignment="center" prefHeight="400.0" prefWidth="400.0" spacing="30.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.banco.controlador.ActualizarControlador">
+
+    <Label text="Actualizar datos">
+        <font>
+            <Font size="18.0" />
+        </font>
+    </Label>
+
+    <GridPane alignment="CENTER" hgap="10.0" vgap="10.0">
+        <Label text="Número de identificación:" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+        <TextField fx:id="txtIdentificacion" minHeight="30.0" GridPane.columnIndex="1" GridPane.rowIndex="0" disable="true" />
+
+        <Label text="Nombre:" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+        <TextField fx:id="txtNombre" minHeight="30.0" GridPane.columnIndex="1" GridPane.rowIndex="1" disable="true"/>
+
+        <Label text="Correo electrónico:" GridPane.columnIndex="0" GridPane.rowIndex="2" />
+        <TextField fx:id="txtCorreo" minHeight="30.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+
+        <Label text="Dirección de residencia:" GridPane.columnIndex="0" GridPane.rowIndex="3" />
+        <TextField fx:id="txtDireccion" minHeight="30.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+
+        <Label text="Contraseña:" GridPane.columnIndex="0" GridPane.rowIndex="4" />
+        <PasswordField fx:id="txtPassword" minHeight="30.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+        <columnConstraints>
+            <ColumnConstraints />
+            <ColumnConstraints />
+        </columnConstraints>
+        <rowConstraints>
+            <RowConstraints />
+            <RowConstraints />
+            <RowConstraints />
+            <RowConstraints />
+            <RowConstraints />
+        </rowConstraints>
+    </GridPane>
+
+    <Button fx:id="btnActualizar" onAction="#actualizar" minHeight="40.0" minWidth="130.0" style="-fx-background-color: #00807a; -fx-text-fill: white" text="Actualizar" />
+
+</VBox>

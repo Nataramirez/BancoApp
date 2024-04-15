@@ -38,7 +38,7 @@
         <Button fx:id="cerrarSesion" minHeight="40.0" minWidth="130.0" style="-fx-background-color: #00807a; -fx-text-fill: white" onAction="#cerrarSesionActual" text="Cerrar sesión" />
         <Button fx:id="consultar" minHeight="40.0" minWidth="130.0" style="-fx-background-color: #00807a; -fx-text-fill: white" onAction="#consultarSaldo" text="Consultar" />
         <Button fx:id="transferir" minHeight="40.0" minWidth="130.0" style="-fx-background-color: #00807a; -fx-text-fill: white" onAction="#irATransferir" text="Transferir" />
-
+        <Button id="btnActualizar" onAction="#actualizar" minHeight="40.0" minWidth="130.0" style="-fx-background-color: #00807a; -fx-text-fill: white" text="Actualizar" />
     </HBox>
 
 
